@@ -109,7 +109,7 @@ def run_epoch(loader, model, criterion, optimizer, epoch=0, n_epochs=0, train=Tr
 
         # Accounting
         _, predictions_var = torch.topk(output_var, 1)
-        error = 1 - torch.eq(predictions_var, target_var).float().mean()
+        error = 1 - torch.eq(predictions_var.squeeze(), target_var).float().mean()
         batch_time = time.time() - end
         end = time.time()
 
